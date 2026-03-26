@@ -1,4 +1,7 @@
 {
+  // exttends để kế thừa cấu hình từ tsconfig.base.json, giúp tránh lặp lại cấu hình chung 
+  // và dễ dàng quản lý khi có nhiều tsconfig khác nhau trong dự án
   "extends": "./tsconfig.base.json",
-  "include": ["src", "tests", "src/types"]
+  "include": ["src", "tests", "src/types"] 
+  // Include để TypeScript nhận diện các file trong thư mục src/types nhằm tránh lỗi "Cannot find module '...' or its corresponding type declarations."
 }
