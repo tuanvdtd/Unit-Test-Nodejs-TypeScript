@@ -23,10 +23,23 @@ export function validateRequest(schema: ZodObject) {
     })
     // Validate failed, chặn request ở bước này.
     if (!result.success) {
+      /*
+      [                                                                                                                                                           
+        {                                                                                                                                                         
+          path: 'body.age',                                                                                                                                       
+          message: 'Invalid input: expected number, received string'                                                                                              
+        },                                                                                                                                                        
+        {                                                                                                                                                         
+          path: 'params.number',                                                                                                                                  
+          message: 'Too small: expected number to be >=1'
+        }
+      ]
+      */
       const details = result.error.issues.map((e) => ({
         path: e.path.join('.'),
         message: e.message,
       }))
+      // example: Validation error: body.age, params.number
       throw ApiError.BadRequest(
         `Validation error: ${details.map(i => i.path).join(', ')}`,
         details
