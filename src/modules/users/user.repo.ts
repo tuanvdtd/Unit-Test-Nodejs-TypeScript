@@ -9,6 +9,8 @@ export const UserRepo = {
     return col.users().findOne({ email })
   },
 
+  // omit là loại bỏ trường _id khỏi User vì khi tạo mới, _id sẽ do MongoDB tự sinh ra, 
+  // ngược lại với omit là pick sẽ chỉ lấy những trường được chỉ định
   async create(data: Omit<User, '_id'>) {
     const now = new Date()
     const doc = { ...data, createdAt: now, updatedAt: now }
