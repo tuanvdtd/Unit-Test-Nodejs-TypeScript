@@ -6,7 +6,8 @@ import { createApp } from '~/app';
 describe('App', () => {
   let app: Express;
 
-  beforeAll(() => {
+  // Khởi tạo app trước mỗi test
+  beforeEach(() => {
     app = createApp();
   });
 
