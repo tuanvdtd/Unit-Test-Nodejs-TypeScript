@@ -31,7 +31,7 @@ describe("CORS Middleware", () => {
       .set("Origin", disallowedOrigin);
 
     expect(res.status).toBe(500);
-    console.log(res.error)
+    // console.log(res.error)
     expect((res.error as any).text).toContain(`Origin ${disallowedOrigin} not allowed by CORS`);
   });
 
